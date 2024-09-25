@@ -104,16 +104,18 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.add("dark_theme");
 }
 
-function sendEmail(){
+function sendEmail() {
   Email.send({
-    Host : "smtp..com",
-    Username : "siddarthgadge4209@gmail.com",
-    Password : "Vijay@4209",
-    To : '20sdeveloper4209@gmail.com',
-    From : document.querySelector('#email').value,
-    Subject : "New Client Connect",
-    Body : "New Client"+document.querySelector('#name').value+"<br>"+document.querySelector('#email').value+"<br>"+document.querySelector('#phone').value+"<br>"+document.querySelector('#message').value+"<br>"
-}).then(
-  message => alert("Send Successfully")
-);
+    Host: "smtp.gmail.com", // Update this with your SMTP provider
+    Username: "siddarthgadge4209@gmail.com",
+    Password: "Vijay@4209", // NEVER expose this in client-side code
+    To: '20sdeveloper4209@gmail.com',
+    From: document.querySelector('#email').value,
+    Subject: "New Client Connect",
+    Body: "New Client: " + document.querySelector('#name').value + "<br>Email: " + document.querySelector('#email').value + "<br>Phone: " + document.querySelector('#phone').value + "<br>Message: " + document.querySelector('#message').value
+  }).then(
+    message => alert("Email Sent Successfully")
+  ).catch(
+    error => alert("Failed to send email: " + error)
+  );
 }
